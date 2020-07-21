@@ -1,0 +1,77 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    font-family: -apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,"Helvetica Neue",Arial,"Noto Sans",sans-serif,"Apple Color Emoji","Segoe UI Emoji","Segoe UI Symbol","Noto Color Emoji";
+    font-size: 1rem;
+    font-weight: 400;
+    line-height: 1.5;
+}
+#book {
+    height: 100%;
+    display: flex;
+    align-items: stretch;
+}
+#toc.expanded {
+    flex-basis: 20%;
+    overflow-y: auto;
+}
+#toc #tocList {
+    display: none;
+}
+#toc.expanded #tocList {
+    display: block;
+}
+#toc .btn {
+    padding: 5px 10px;
+    font-size: 16px;
+    margin: 10px 10px 5px 10px;
+    line-height: 10px;
+    border-radius: 5px;
+}
+#toc a {
+    display: block;
+    margin-left: 10px;
+    color: #0070e8;
+    text-decoration: none;
+}
+#toc a:hover {
+    color: #0056b3;
+    text-decoration: underline;
+}
+#bookContent {
+    flex-basis: 80%;
+}
+#bookContent.expanded {
+    flex-basis: 100%;
+}
+#bookLoading, #error, .authorize {
+    position: absolute;
+    top: 15px;
+    left: 15px;
+    z-index: 999;
+}
+#error {
+    background: #ffbbbb;
+    padding: 10px 15px 0px 15px;
+    border-radius: 15px;
+}
+#error p {
+    margin-bottom: 10px;
+}
+#navBtns {
+    display: flex;
+    height: 50px;
+}
+#navBtns > .btn {
+    flex-basis: 50%;
+    font-size: 30px;
+    padding: 0;
+    line-height: 1;
+    border-radius: 5px;
+}
+.btn {
+    cursor: pointer;
+}
+.btn.disabled, .btn:disabled {
+    cursor: unset;
+}

@@ -1,0 +1,20 @@
+Major items:
+
+- Font & font size selection: affect book area only
+  Store in a cookie? In the same file as location?
+  If storing with location, maybe store TOC toggle status too?
+
+Minor items:
+
+- Improve home page to include info and instructions for app
+  Also improve error handling to detect GAPI failures (bad host, creds, etc)
+
+- Consider whether to continue using the GAPI functions for all non-upload calls,
+  or if it would be better to convert everything but auth to XHR-style requests.
+  For example, could make a wrapper that only has what I am using:
+    2x "get" - read book, read location data
+    1x "list" - convert book id into location data id
+    1x "create" - create location data when a book is loaded for the first time
+
+- If possible, highlight the current chapter title in the TOC
+  (only if this can be updated when reaching a new chapter by paging too)

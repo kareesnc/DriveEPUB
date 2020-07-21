@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<!--Allows a user to authorize the app so EPUBs can be opened from Drive-->
+
+<head>
+    <title>Drive EPUB Reader</title>
+    <meta charset="utf-8" />
+    <script src="https://apis.google.com/js/api.js"></script>           <!--Google API-->
+    <script src="lib/jquery-3.5.1.min.js"></script>                     <!--jQuery 3.5.1-->
+    <script src="js/auth.js"></script>                                  <!--Initialization routine for GAPI-->
+
+    <script src="lib/jszip.min.js"></script>                            <!--Unzipper required to read EPUBs-->
+    <script src="lib/epub.min.js"></script>                             <!--Main EPUB reading library-->
+    <script src="js/book.js"></script>                                  <!--Functions to call the EPUB library-->
+    <script src="js/read.js"></script>                                  <!--Load & render the book-->
+    <link rel="stylesheet" href="css/read.css">                         <!--Book layout CSS-->
+    </script>
+</head>
+
+<body>
+    <p class="authorize" style="display: none;">This app is not currently authorized to your account.
+        <button id="authorize_button" style="margin-left: 10px;">Authorize Now</button>
+    </p>
+    <div id="error" style="display: none"></div>
+    <div id="bookLoading">
+        <div class="spinner-border text-primary m-3" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+    <!--The main book area will start hidden, and show once the load is complete-->
+    <div id="book" style="visibility: hidden;">
+        <div id="toc">
+            <button class="btn" id="tocToggle" disabled>
+                <svg class="bi bi-list" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M2.5 11.5A.5.5 0 013 11h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 7h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5zm0-4A.5.5 0 013 3h10a.5.5 0 010 1H3a.5.5 0 01-.5-.5z" clip-rule="evenodd"/>
+                </svg>
+            </button>
+            <button class="btn" id="bookmark" disabled>
+                <svg width="1em" height="1em" viewBox="0 0 16 16" class="bi bi-bookmark" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                    <path fill-rule="evenodd" d="M8 12l5 3V3a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v12l5-3zm-4 1.234l4-2.4 4 2.4V3a1 1 0 0 0-1-1H5a1 1 0 0 0-1 1v10.234z"/>
+                </svg>
+            </button>
+            <div id="tocList"></div>
+        </div>
+        <div id="bookContent" class="expanded">
+            <div id="viewer"></div>
+            <div id="navBtns">
+                <button class="btn btn-light" id="prev" disabled>
+                    <svg class="bi bi-caret-left-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.86 8.753l5.482 4.796c.646.566 1.658.106 1.658-.753V3.204a1 1 0 00-1.659-.753l-5.48 4.796a1 1 0 000 1.506z" />
+                    </svg>
+                </button>
+                <button class="btn btn-light" id="next" disabled>
+                    <svg class="bi bi-caret-right-fill" width="1em" height="1em" viewBox="0 0 16 16" fill="currentColor" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M12.14 8.753l-5.482 4.796c-.646.566-1.658.106-1.658-.753V3.204a1 1 0 011.659-.753l5.48 4.796a1 1 0 010 1.506z" />
+                    </svg>
+                </button>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

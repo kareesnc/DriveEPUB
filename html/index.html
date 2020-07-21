@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<!--Allows a user to authorize the app so EPUBs can be opened from Drive-->
+
+<head>
+    <title>Drive EPUB Reader</title>
+    <meta charset="utf-8" />
+    <script src="https://apis.google.com/js/api.js"></script>           <!--Google API-->
+    <script src="lib/jquery-3.5.1.min.js"></script>                     <!--jQuery 3.5.1-->
+    <script src="js/auth.js"></script>                                  <!--Initialization routine for GAPI-->
+
+    <script type="text/javascript">
+        $(document).ready(function () {
+            loadGoogleAPI(null, null);
+        });
+    </script>
+</head>
+
+<body>
+    <p style="margin: 20px 30px;">
+        <span style="margin-right: 10px;">Drive EPUB Reader</span>
+        <button id="authorize_button" class="authorize" style="display: none;">Authorize</button>
+        <button id="signout_button" class="signout" style="display: none;">Sign Out</button>
+    </p>
+</body>
+</html>
